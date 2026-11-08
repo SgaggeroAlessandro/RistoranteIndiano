@@ -1,0 +1,83 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RistoranteIndiano.MainWindow"
+        Title="RistoranteIndiano">
+
+    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,200" Margin="10">
+
+        
+        <DockPanel Grid.Column="0" Margin="0,0,10,10">
+            <TextBlock DockPanel.Dock="Top" Text="TAVOLI" FontWeight="Bold" Margin="0,0,0,5"/>
+
+           
+            <StackPanel x:Name="PannelloOccupa" DockPanel.Dock="Bottom" Spacing="5" Margin="0,10,0,0" IsVisible="False">
+                <TextBlock x:Name="TestoOccupa"/>
+                <NumericUpDown x:Name="NumPersone" Minimum="1" Maximum="20" Value="2" FormatString="0"/>
+                
+                <Button x:Name="BtnOccupa" Content="Occupa tavolo" Click="BtnOccupa_Click"/>
+
+                <TextBlock x:Name="ErroreOccupa"  TextWrapping="Wrap"/>
+            </StackPanel>
+
+            
+            <ListBox x:Name="ListaTavoli" SelectionChanged="ListaTavoli_SelectionChanged"/>
+        </DockPanel>
+
+      
+        <DockPanel Grid.Column="1" Margin="0,0,10,10">
+            <TextBlock x:Name="TitoloOrdine" DockPanel.Dock="Top" FontWeight="Bold" Margin="0,0,0,5"/>
+
+            <StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="0,10,0,0">
+                <TextBlock x:Name="TotaleOrdine" FontSize="22" FontWeight="Bold"/>
+
+                <Button x:Name="BtnRimuovi" Content="Rimuovi voce selezionata" Click="BtnRimuovi_Click"/>
+
+                <Button x:Name="BtnChiudi" Content="Chiudi conto" Click="BtnChiudi_Click"/>
+
+                
+                <Border x:Name="PannelloConto" IsVisible="False"  Padding="10">
+                    <StackPanel Spacing="5">
+                        <TextBlock x:Name="TestoConto" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+
+                            <Button x:Name="BtnConferma" Content="Conferma pagamento" Click="BtnConferma_Click"/>
+
+                            <Button x:Name="BtnAnnulla" Content="Annulla" Click="BtnAnnulla_Click"/>
+
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <ListBox x:Name="RigheOrdine"/>
+        </DockPanel>
+
+        
+        <DockPanel Grid.Column="2" Margin="0,0,0,10">
+            <TextBlock DockPanel.Dock="Top" Text="MENÙ" FontWeight="Bold" Margin="0,0,0,5"/>
+
+            <StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="0,10,0,0">
+                <TextBlock Text="Quantità:"/>
+                <NumericUpDown x:Name="NumQuantita" Minimum="1" Maximum="50" Value="1" FormatString="0"/>
+
+                <Button x:Name="BtnAggiungi" Content="Aggiungi all'ordine" Click="BtnAggiungi_Click"/>
+
+            </StackPanel>
+
+            <ListBox x:Name="ListaMenu"/>
+        </DockPanel>
+
+        
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <TextBlock DockPanel.Dock="Top" Text="STORICO ORDINI CONCLUSI" FontWeight="Bold"/>
+            <TextBlock x:Name="TestoStorico" DockPanel.Dock="Top" Margin="0,2,0,5"/>
+            <ListBox x:Name="ListaStorico"/>
+        </DockPanel>
+
+    </Grid>
+
+
+</Window>
